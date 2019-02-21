@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ducdm.app.views.fragments.FirstPageView">
+
+    <data>
+        <variable
+            name="FirstPageViewModel"
+            type="com.ducdm.app.viewmodels.subviewmodels.FirstPageViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/sign_in_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="@{FirstPageViewModel.pageTitle}"/>
+
+    </RelativeLayout>
+
+</layout>

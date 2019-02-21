@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ducdm.app.views.PagerView"
+    android:fitsSystemWindows="true">
+
+    <data>
+        <variable
+            name="PagerViewModel"
+            type="com.ducdm.app.viewmodels.PagerViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/main_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:elevation="@dimen/tab_elevation"
+            app:tabTextColor="@android:color/black"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabIndicatorColor="@android:color/white"
+            android:minHeight="?attr/actionBarSize"
+            android:layout_alignParentBottom="true"
+            app:tab_selected="@{PagerViewModel.tabSelectedCommand}"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAppBackground"
+            android:layout_above="@id/tab_layout"/>
+
+    </RelativeLayout>
+
+</layout>

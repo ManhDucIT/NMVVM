@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ducdm.app.views.SignInView">
+
+    <data>
+        <import type="com.ducdm.app.conveters.VisibilityValueConverter"/>
+        <import type="java.lang.String"/>
+        <variable
+            name="SignInViewModel"
+            type="com.ducdm.app.viewmodels.SignInViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/sign_in_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="@{SignInViewModel.userSignIn.username}"/>
+
+        <EditText
+            android:id="@+id/edtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvUsername"
+            android:layout_marginTop="8dp"
+            android:hint="Username"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:text="@={SignInViewModel.userSignIn.username}"/>
+
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtUsername"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:text="@{`` + SignInViewModel.num}"/>
+
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvPassword"
+            android:layout_marginTop="8dp"
+            android:hint="Password"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:text="@={`` + SignInViewModel.num}"/>
+
+        <Button
+            android:id="@+id/btnChangeState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/edtPassword"
+            android:text="@={SignInViewModel.lblChangeState}"
+            android:onClick="@{() -> SignInViewModel.changeState()}"/>
+
+        <Button
+            android:id="@+id/btnShowMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/btnChangeState"
+            android:text="Show Main"
+            android:onClick="@{() -> SignInViewModel.showMain()}"/>
+
+        <Button
+            android:id="@+id/btnShowHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Show Home"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/btnShowMain"
+            android:onClick="@{() -> SignInViewModel.showHome()}"
+            android:visibility="@{VisibilityValueConverter.convert(SignInViewModel.shouldShown)}"/>
+
+    </RelativeLayout>
+
+</layout>
